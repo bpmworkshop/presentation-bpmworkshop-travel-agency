@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Red Hat JBoss BPM Suite - Building the Rewards Business Process Workshop</title>
+		<title>Red Hat JBoss BPM Suite - Building the JBoss Travel Agency Workshop</title>
 
 		<meta name="description" content="Online BPM workshop.">
 		<meta name="author" content="Eric D. Schabell">
@@ -43,8 +43,25 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-                    <h3>Lab 11 - Install JBoss BPM Suite</h3>
+                    <div style="width: 1056px; height: 170px; color: white">
+                        <h3>Building a JBoss BPM Travel Agency</h3>
+                    </div>
+                    <div style="width: 1056px; height: 300px;">
+                        <h5>
+                            This workshop will teach you how to build a business process for a company that wants
+                            to automate its travel agency booking process. This project you will build entirely from the
+                            ground up, installing JBoss BPM Suite, building rules, processes, tasks, data model and
+                            forms. The results will be your very own JBoss BPM Travel Agency.
+                        </h5>
+                    </div>
+                    <div style="width: 1056px; height: 400px;">
+                        <h5><b>Pre-requisits:</b> <i>Java 1.7 or 1.8, Maven 3.2, JBoss BPM Suite 6.1 installer, JBoss EAP 6.4 installer</i></h5>
+                    </div>
 				</section>
+
+                <section>
+                    <h3>Lab 01 - Install JBoss BPM Suite</h3>
+                </section>
 
                 <section data-background-color="white">
                     <div style="width: 1056px; height: 150px;">
@@ -52,7 +69,7 @@
                         <h4>To install and login to JBoss BPM Suite product</h4>
                     </div>
                     <div style="width: 1056px; height: 600px;">
-                        <img src="images/brms_bpms_workshop/bpmsuite-arch.png">
+                        <img src="images/bpmsuite-arch.png">
                     </div>
                 </section>
 
@@ -60,9 +77,10 @@
                     <h2>Install JBoss BPM Suite</h2>
                     <ul>
                         <li><a href="https://github.com/jbossdemocentral/bpms-install-demo/archive/master.zip" style="color: red" target="_blank">Download and unzip.</a></li>
-                        <li>Add product installer, see installs/README for details</li>
+                        <li>Add product installers, see installs/README for details</li>
                         <ul>
-                            <li><code>$ cp jboss-bpms-installer-6.0.3.GA-redhat-1.jar brms-install-demo/installs/</code></li>
+                            <li><code>$ cp jboss-bpmsuite-6.1.0.GA-installer.jar brms-install-demo/installs/</code></li>
+                            <li><code>$ cp jboss-eap-6.4.0-installer.jar brms-install-demo/installs/</code></li>
                         </ul>
                         <li>run init.sh or init.bat</li>
                         <ul>
@@ -70,23 +88,13 @@
                         </ul>
                         <li>follow instructions to start server</li>
                         <ul>
-                            <li><code>$ ./target/jboss-eap-6.1/bin/standalone.sh</code></li>
+                            <li><code>$ ./target/jboss-eap-6.4/bin/standalone.sh</code></li>
                         </ul>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Install your own xPaaS!</h2>
-                    Use one click button, then jump to <a href="lab12.html" target="_blank" style="color: red">lab 12</a>:
-                    <div align="right">
-                        <a href="https://openshift.redhat.com/app/console/application_type/custom?&cartridges[]=https://raw.githubusercontent.com/jbossdemocentral/cartridge-bpmPaaS/master/metadata/manifest.yml&initial_git_url=&name=bpmPaaS" target="_blank"><img alt="Click to install OpenShift" src="images/install-bpmPaaS.svg" /></a>
-                    </div>
-                    Note: use `MEDIUM` gear for bpmPaaS.
-                </section>
-
-
-                <section>
-                    <img src="images/brms_bpms_workshop/image122.png">
+                    <img src="images/bpms-workshop/image01.png">
 				</section>
 
                 <section>
@@ -100,7 +108,7 @@
                         </ul>
                         <li>Means all projects stored in .niogit/* can be found here:</li>
                         <ul>
-                            <li><code>bpms-install-demo/target/jboss-eap-6.1/bin/.niogit/</code></li>
+                            <li><code>bpms-install-demo/target/jboss-eap-6.4/bin/.niogit/</code></li>
                         </ul>
                     </ul>
 				</section>
@@ -115,7 +123,7 @@
                         </ul>
                         <li>Installed into:</li>
                         <ul>
-                            <li><code>target/jboss-eap-6.1/standalone/configuration/</code></li>
+                            <li><code>target/jboss-eap-6.4/standalone/configuration/</code></li>
                         </ul>
                     </ul>
                 </section>
@@ -137,13 +145,9 @@
                 <section>
                     <h2>JBoss BPM Suite Users</h2>
                     <ul>
-                        <li><strong>Admin</strong> user & password:</li>
+                        <li>This user has all roles in project needed:</li>
                         <ul>
                             <li><code>erics  -  bpmsuite1!</code></li>
-                        </ul>
-                        <li><strong>Analyst</strong> users & passwords</li>
-                        <ul>
-                            <li><code>erics - bpmsuite1!</code></li>
                         </ul>
                     </ul>
                 </section>
@@ -160,11 +164,11 @@
                 </section>
 
                 <section>
-                    <img src="images/brms_bpms_workshop/image123.png">
+                    <img src="images/bpms-workshop/image02.png">
                 </section>
 
                 <section>
-                    <img src="images/brms_bpms_workshop/image124.png">
+                    <img src="images/bpms-workshop/image03.png">
                 </section>
 
                 <section data-background="images/jteimages/image42.png" data-background-position="top">
@@ -183,9 +187,8 @@
                         <img height="150" width="99%" src="images/references.jpg">
                     </div>
                     <ul>
-                        <li>JBoss BRMS & BPM Suite Articles</li>
+                        <li>JBoss BPM Suite Articles</li>
                         <ul>
-                            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
                             <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
                         </ul>
                         <li>JBoss BPM Suite Demos</li>
@@ -204,7 +207,7 @@
 
                 <section>
                     <h2>JBoss BPM Suite Workshop</h2>
-                    <h3><a href="lab12.html"  style="color: red" target="_blank">Lab 12 - Create a new project</a></h3>
+                    <h3><a href="lab02.html"  style="color: red" target="_blank">Lab 02 - Create a new project</a></h3>
                 </section>
             </div>
 		</div>
