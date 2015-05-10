@@ -43,7 +43,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-                    <h3>Lab 13 - Create a domain model</h3>
+                    <h3>Lab 03 - Create a domain model</h3>
 				</section>
 
                 <section data-background-color="white">
@@ -52,7 +52,7 @@
                         <h4>To create a new domain model with the JBoss BPM Suite domain modeler</h4>
                     </div>
                     <div style="width: 1056px; height: 600px;">
-                        <img src="images/brms_bpms_workshop/bpmsuite-component-datamodeler.png">
+                        <img src="images/bpmsuite-component-datamodeler.png">
                     </div>
                 </section>
 
@@ -63,7 +63,7 @@
                         <ul>
                             <li><code>AUTHORING -> PROJECT AUTHORING</code></li>
                             <div style="float: right">
-                                <img src="images/brms_bpms_workshop/image138.png" />
+                                <img src="images/bpms-workshop/image3-01.png" />
                             </div>
                         </ul>
                     </ul>
@@ -72,11 +72,11 @@
                 <section>
                     <h2>Create new domain model</h2>
                     <ul>
-                        <li>Open the domain modeler:</li>
+                        <li>Open the domain modeler with first object to be created:</li>
                         <ul>
-                            <li><code>TOOLS -> DATA MODELER</code></li>
+                            <li><code>NEW ITEM -> DATA OBJECT</code></li>
                             <div style="float: right">
-                                <img src="images/brms_bpms_workshop/image177.png" />
+                                <img src="images/bpms-workshop/image3-02.png" />
                             </div>
                         </ul>
                     </ul>
@@ -85,20 +85,35 @@
                 <section>
                     <h2>Create new domain model</h2>
                     <ul>
-                        <li>Create Employee</li>
+                        <li>Create <code>Applicant</code> in pop-up</li>
                         <ul>
-                            <li>click on <code>+CREATE</code> button</li>
+                            <li>Name: <code>Applicant</code></li>
+                            <li>Package: <code>org.specialtripsagency</code></li>
                         </ul>
+                        <li>Click on <code>OK</code></li>
                     </ul>
-                    <img src="images/brms_bpms_workshop/image19.png" />
+                    <img src="images/bpms-workshop/image3-03.png" />
                 </section>
 
                 <section>
                     <h2>Create new domain model</h2>
                     <ul>
-                        <li>Create <code>Employee</code> and click <code>+OK</code> when done</li>
+                        <li>The new object <code>Applicant</code> ready for fields to be added:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-04.png" />
+                </section>
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Add field <code>Name</code> and click <code>+CREATE</code> when done:</li>
+                        <ul>
+                            <li>Id: <code>name</code></li>
+                            <li>Label: <code>Applicant Name</code></li>
+                            <li>Type: select <code>String</code></li>
+                            <li>the field will be added to <code>Applicant</code></li>
+                        </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image178.png" />
+                            <img src="images/bpms-workshop/image3-05.png" />
                         </div>
                     </ul>
                 </section>
@@ -108,12 +123,13 @@
                     <ul>
                         <li>Add all fields as shown, hitting <code>+CREATE</code> to add each one</li>
                         <ul>
-                            <li>name, Name, <code>String</code></li>
-                            <li>dept, Department, <code>String</code></li>
+                            <li>emailAddress, Email Address, <code>String</code></li>
+                            <li>numberOfTravelers, Number of Travelers, <code>Integer</code></li>
+                            <li>otherDetails, Additional Details of Applicant, <code>String</code></li>
+                            <li>use tabs <code>DATA OJBECT</code> or <code>FIELDS</code> if need to modify</li>
                         </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image179.png" />
-                            <img src="images/brms_bpms_workshop/image180.png" />
+                            <img src="images/bpms-workshop/image3-06.png" />
                         </div>
                     </ul>
                 </section>
@@ -121,80 +137,147 @@
                 <section>
                     <h2>Create new domain model</h2>
                     <ul>
-                        <li>Finished <code>Employee</code> object in our domain model for now...</li>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>To view create object, expand <code>PROJECT EXPLORER -> click on + icon</code></li>
+                        <li>Expand to <code>(DEFAULT)/ORG/SPECIALTRIPSAGENCY</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-07.png" />
+                        <img src="images/bpms-workshop/image3-08.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Next in our domain model is <code>Flight</code> add from menu <code>NEW ITEM -> DATA OBJECT</code> and fields as shown:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-09.png" />
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>To view create object, expand <code>PROJECT EXPLORER -> click on + icon</code></li>
+                        <li>Expand to <code>(DEFAULT)/ORG/SPECIALTRIPSAGENCY</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-10.png" />
+                        <img src="images/bpms-workshop/image3-11.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Next in our domain model is <code>Hotel</code>, create as shown:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-12.png" />
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-13.png" />
+                        <img src="images/bpms-workshop/image3-14.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Next in our domain model is <code>PaymentDetails</code>, create as shown:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-15.png" />
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-16.png" />
+                        <img src="images/bpms-workshop/image3-17.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Next in our domain model is <code>TravelDetails</code>, create as shown:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-18.png" />
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-19.png" />
+                        <img src="images/bpms-workshop/image3-20.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Next in our domain model is <code>Rejection</code>, create as shown:</li>
+                    </ul>
+                    <img src="images/bpms-workshop/image3-21.png" />
+                </section>
+
+                <section>
+                    <h2>Create new domain model</h2>
+                    <ul>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
+                    </ul>
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-22.png" />
+                        <img src="images/bpms-workshop/image3-23.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <div style="width: 1056px; height: 100px; color: white">
+                        <h2>Create new domain model</h2>
+                    </div>
+                    <div style="width: 1056px; height: 580px;">
                         <ul>
-                            <li>later we will add an Award, but first we need to create the Award object</li>
+                            <li>Our last item is <code>BookingObject</code>, create as shown:</li>
                         </ul>
-                    </ul>
-                    <img src="images/brms_bpms_workshop/image181.png" />
+                        <img height="100%" src="images/bpms-workshop/image3-24.png" />
+                    </div>
                 </section>
 
                 <section>
                     <h2>Create new domain model</h2>
                     <ul>
-                        <li>Add <code>Award</code> object to our domain model</li>
+                        <li>Finally, we click on <code>SAVE</code>, add comment, click on <code>SAVE</code></li>
+                        <li>Expand <code>DATA OJBECTS</code> section to view model:</li>
                     </ul>
-                    <img src="images/brms_bpms_workshop/image182.png" />
+                    <div style="float: right">
+                        <img src="images/bpms-workshop/image3-25.png" />
+                        <img src="images/bpms-workshop/image3-26.png" />
+                    </div>
                 </section>
 
                 <section>
-                    <h2>Create new domain model</h2>
-                    <ul>
-                        <li>Add all fields as shown, hitting <code>+CREATE</code> to add each one</li>
-                        <ul>
-                            <li>amount, Award amount, <code>Integer</code></li>
-                            <li>explanation, Explanation, <code>String</code></li>
-                            <div style="float: right">
-                                <img src="images/brms_bpms_workshop/image183.png" />
-                            </div>
-                        </ul>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Create new domain model</h2>
-                    <ul>
-                        <li>Finished <code>Award</code> object in our domain model</li>
-                    </ul>
-                    <img src="images/brms_bpms_workshop/image184.png" />
-                </section>
-
-                <section>
-                    <h2>Create new domain model</h2>
-                    <ul>
-                        <li>Finalize domain model by adding <code>Award</code> object to <code>Employee</code></li>
-                        <ul>
-                            <li>award, Award, <code>AWARD</code></li>
-                        </ul>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image234.png" />
-                        </div>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Create new domain model</h2>
-                    <ul>
-                        <li>Final domain model with <code>Award</code> and <code>Employee</code></li>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image235.png" />
-                        </div>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Save domain model</h2>
-                    <ul>
-                        <li>Click on <code>SAVE</code> button to persist the domain model</li>
-                        <li>pop-up bar should say <code>Data model was saved</code></li>
-                    </ul>
-                    <img src="images/brms_bpms_workshop/image31.png" />
-                </section>
-
-                <section>
-                    <h2>Rewards process project</h2>
-                    <h5>(next up, creating rewards process...)</h5>
-                    <img src="images/brms_bpms_workshop/image185.png">
+                    <h3>Building the Travel Agency</h3>
+                    <h5>(next up, creating guided rules...)</h5>
+                    <img src="images/bpms-workshop/image3-27.png">
                 </section>
 
                 <section data-background="images/jteimages/image42.png" data-background-position="top">
@@ -215,7 +298,6 @@
                     <ul>
                         <li>JBoss BRMS & BPM Suite Articles</li>
                         <ul>
-                            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
                             <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
                         </ul>
                         <li>JBoss BPM Suite Demos</li>
@@ -234,7 +316,7 @@
 
                 <section>
                     <h2>JBoss BPM Suite Workshop</h2>
-                    <h3><a href="lab14.html" style="color: red" target="_blank">Lab 14 - Create rewards process</a></h3>
+                    <h3><a href="lab04.html" style="color: red" target="_blank">Lab 04 - Create Guided Rules</a></h3>
                 </section>
             </div>
 		</div>

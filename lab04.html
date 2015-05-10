@@ -42,295 +42,244 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-                    <h3>Lab 14 - Create rewards process</h3>
-				</section>
+                <section>
+                    <h3>Lab 04 - Create Guided Rules</h3>
+                </section>
 
                 <section data-background-color="white">
                     <div style="width: 1056px; height: 180px;">
                         <h2>Lab Goal</h2>
-                        <h4>To create a new rewards process for submitting employee rewards and processing by HR department</h4>
+                        <h4>To create guided rules calculating shopping cart totals, totaling shopping cart items, and apply promotions for Cool Store</h4>
                     </div>
                     <div style="width: 1056px; height: 600px;">
-                        <img src="images/brms_bpms_workshop/bpmsuite-component-processdesigner.png">
+                        <img src="images/brms_bpms_workshop/brms-component-ruleauthoring.png">
                     </div>
                 </section>
 
                 <section>
-					<h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>In project authoring we will select a new process</li>
+                        <li>First we will create a new guided rule:</li>
                         <ul>
-                            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> BUSINESS PROCESS</code></li>
-                            <li><code>RESOURCE NAME: rewards-approval</code></li>
+                            <li><code>Total Shopping Cart</code></li>
+                            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code></li>
+                            <li><code>RESOURCE NAME: Total Shopping Cart</code></li>
+                            <li><code>(don't check the DSL box this time)</code></li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Start by importing model object <code>ShoppingCart</code> for this rule:</li>
+                        <ul>
+                            <li><code>CONFIG tab on the bottom of rule</code></li>
+                            <li><code>NEW ITEM button at top, select ShoppingCart from Import list</code></li>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image168.png" />
+                            <img src="images/brms_bpms_workshop/image169.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Now return to the <code>Edit</code> tab an start designing our rule</li>
+                        <li>The condition (WHEN):</li>
+                        <ul>
+                            <li><code>'There is a ShoppingCart'</code></li>
+                            <li>assign a variable name to this ShoppingCart <code>'$sc'</code></li>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image41.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>The action (THEN) is a two part action</li>
+                        <li>We want to operate on the given ShoppingCart ($sc)</li>
+                        <ul>
+                            <li>Modify value of ShoppingCart field cartTotal to 0</li>
+                            <li>Modify value of ShoppingCart field cartItemPromoSavings to following formula:</li>
+                            <ul>
+                                <li>`($sc.cartItemPromoSavings == 0.0) ? 0.0 : $sc.cartItemPromoSavings * -1`</li>
+                            </ul>
+                        </ul>
+                        <div style="float: right">
+                            <img src="images/brms_bpms_workshop/image42.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Expand the 'show options' and add:</li>
+                        <ul>
+                            <li><code>check NO-LOOP box</code></li>
+                            <li><code>RULEFLOW-GROUP: total-rules</code></li>
+                            <ul>
+                                <li>`($sc.cartItemPromoSavings == 0.0) ? 0.0 : $sc.cartItemPromoSavings * -1`</li>
+                            </ul>
+                        </ul>
+                        <li>Save the rule</li>
+                        <li>Ensure your package builds:</li>
+                        <ul>
+                            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
+                            <li><code>(should see green pop-up 'Build Successful')</code></li>
                             <div style="float: right">
-                                <img src="images/brms_bpms_workshop/image186.png" />
-                                <img src="images/brms_bpms_workshop/image187.png" />
+                                <img src="images/brms_bpms_workshop/image43.png" />
                             </div>
                         </ul>
-                    </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>The process has a single start node</li>
-                        <li>We are going to design a 4 step process:</li>
+                        <li>Now the final guided rule will be created on your own:</li>
                         <ul>
-                            <li><code>Approve Reward</code>, an HR user task</li>
-                            <li><code>Log</code>, a service task (domain specific)</li>
-                            <li><code>Gateway</code>, checks approval or denial of reward</li>
-                            <li><code>Personel File</code>, put note in employee personnel file on award status</li>
-                            <li><code>Email Notice</code>, a service task (domain specific) notify employee of results</li>
+                            <li><code>Apply Cart Item Promotions</code></li>
+                            <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code></li>
+                            <li><code>RESOURCE NAME: Apply Cart Item Promotions</code></li>
+                            <li><code>don't check the DSL box this time</code></li>
                         </ul>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>You can use Object Library to drag-and-drop nodes</li>
-                        <li>Easier maybe to click a node and use mini-icons to add next node type</li>
+                        <li>The condition (WHEN) is two fold</li>
                         <ul>
-                            <li>click on the start node</li>
-                            <li>click on mini-icon of task to add transition & task node</li>
-                            <li>click on wrench-icon to assign <code>User Task</code></li>
-                            <div style="float: right">
-                                <img src="images/brms_bpms_workshop/image188.png" />
-                                <img src="images/brms_bpms_workshop/image189.png" />
-                                <img src="images/brms_bpms_workshop/image190.png" />
-                            </div>
+                            <li>Part I is about a ShoppingCartItem</li>
+                            <li>Part II is about a PromoEvent that monitors an event stream <code>'Promo Stream'</code></li>
+                        </ul>
+                        <li>The action (THEN) will modify two ShoppingCart fields</li>
+                        <ul>
+                            <li>promoSavings field</li>
+                            <li>price field</li>
                         </ul>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>double-click node to name node <code>Approve Reward</code></li>
-                        <li>next open <code>Object Library</code> to select Service Task menu <code>LOG</code> node</li>
+                        <li>The condition Part I:</li>
+                        <ul>
+                            <li><code>'There is a ShoppingCartItem'</code></li>
+                            <li>assign a variable name to this ShoppingCart <code>'$sci'</code></li>
+                            <li><code>'with itemId'</code></li>
+                            <li>assign a variable name to this itemID <code>'$itemId'</code></li>
+                        </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image191.png" />
-                            <img width="40%" height="40%" src="images/brms_bpms_workshop/image192.png" />
-                            <img src="images/brms_bpms_workshop/image193.png" />
+                            <img src="images/brms_bpms_workshop/image44.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>locate the <code>Connecting Objects</code> menu on in the <code>Object Library</code></li>
-                        <li>click on <code>Sequence Flow</code>, drag-and-drop onto canvas</li>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image194.png" />
-                            <img src="images/brms_bpms_workshop/image195.png" />
+                        <li>The condition Part IIa</li>
+                        <ul>
+                            <li>top green <code>+</code> sign adds second condition</li>
+                            <li>start with from Entry Point and fill in: <code>'Promo Stream'</code></li>
+                            <li>within condition use <code>click to add patterns</code></li>
+                            <li>add <code>PromoEvent</code>, results in <code>'There is a PromoEvent'</code></li>
+                        </ul>
+                        <div align="center">
+                            <img src="images/brms_bpms_workshop/image172.png" />
+                            <img src="images/brms_bpms_workshop/image173.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>select <code>Sequence Flow</code>, connect arrow from <code>Approve Reward</code> to <code>Log</code></li>
+                        <li>The condition Part IIb</li>
+                        <ul>
+                            <li>clicking on `PromoEvent` gives a pop-up</li>
+                            <li>select entry</li>
+                            <ul>
+                                <li><code>All of (And)</code></li>
+                                <li>results in <code>'with all of the following'</code></li>
+                            </ul>
+                        </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image196.png" />
-                            <img src="images/brms_bpms_workshop/image197.png" />
+                            <img src="images/brms_bpms_workshop/image174.png" />
+                            <img src="images/brms_bpms_workshop/image175.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>click on <code>Log</code> node, use mini-icon to click on <code>XOR Gateway</code> to add gateway</li>
+                        <li>The condition Part IIc</li>
                         <ul>
-                            <li>we want the process to take one and only one of the offered paths (XOR)</li>
+                            <li>click on <code>all of the following"</code> line to add:</li>
+                            <li>an itemId equal to the ShoppingCartItem <code>'$itemId'</code></li>
+                            <li>a percentageOff assigned variable <code>'$pctOff'</code></li>
+                            <li>percentageOff is over sliding window: <code>'none'</code></li>
                         </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image198.png" />
-                            <img src="images/brms_bpms_workshop/image199.png" />
+                            <img src="images/brms_bpms_workshop/image45.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Save rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>Be sure to regularly <code>SAVE</code> your work, found in top right floppy-disk-icon</li>
-                        <li>You will be asked to enter a commit comment to save your work</li>
-                        <li>When you save your work, should see a green bar showing save succeeded</li>
-                    </ul>
-                    <img src="images/brms_bpms_workshop/image200.png" />
-                    <img src="images/brms_bpms_workshop/image201.png" />
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>select mini-icon from gateway node to add the first of two <code>task nodes</code></li>
+                        <li>The action part of our rule is next:</li>
+                        <li><code>'Modify value of ShoppingCartItem ($sci)'</code></li>
+                        <li><code>'promoSavings is set to 0.0'</code></li>
+                        <li><code>'Modify value of ShoppingCartItem ($sci)'</code></li>
+                        <li><code>'price is set to 0.0'</code></li>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image202.png" />
-                            <img src="images/brms_bpms_workshop/image203.png" />
+                            <img src="images/brms_bpms_workshop/image46.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
+                    <h2>Creating guided rules</h2>
                     <ul>
-                        <li>select mini-icon from gateway node to add the final <code>task node</code></li>
+                        <li>Expand the 'show options' and add:</li>
+                        <ul>
+                            <li><code>check NO-LOOP box</code></li>
+                            <li><code>RULEFLOW-GROUP: promo-cart-rules</code></li>
+                        </ul>
+                        <li>Save the rule.</li>
+                        <li>Ensure your package builds:</li>
+                        <ul>
+                            <li><code>TOOLS -> PROJECT EDITOR -> BUILD & DEPLOY</code></li>
+                            <li><code>(should see green pop-up 'Build Successful')</code></li>
+                        </ul>
                         <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image204.png" />
+                            <img src="images/brms_bpms_workshop/image47.png" />
                         </div>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>click on each <code>task nodes</code> wrench-icon to select <code>script tasks</code></li>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image205.png" />
-                        </div>
-                    </ul>
+                    <img src="images/brms_bpms_workshop/image48.png">
                 </section>
 
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>double-click on the top <code>script tasks</code> to assign name: <code>Note Personnel File Rejected</code></li>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image206.png" />
-                        </div>
-                    </ul>
-                </section>
+
 
                 <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>double-click on the second <code>script tasks</code> to assign name: <code>Note Personnel File Accepted</code></li>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image207.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>After making a note in the personnel files, we want to notify the employee by email</li>
-                        <li>Add to each path a <code>service task</code> called <code>Email</code></li>
-                        <ul>
-                            <li>drag-and-drop the <code>Email service tasks</code> onto the canvas</li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image208.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>To add transitions, you can drag-and-drop as shown previously</li>
-                        <li>Or you can select the <code>script task</code> and use the mini-icons</li>
-                        <ul>
-                            <li>drag-and-drop the <code>mini-icon transition arrow</code> onto the <code>Email node</code></li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image209.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>Double-click on the top <code>Email node</code> to name it <code>Email Rejected</code></li>
-                        <li>The same for the bottom path, naming it to <code>Email Approved</code></li>
-                        <ul>
-                            <li>these are nodes to send an email of the rewards approval process to the employee</li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image210.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>Double-click on <code>Email Rejected</code>, click on mini-icon <code>End node</code></li>
-                        <li>This adds the final end node, name it <code>End Rejected</code> path for unique name</li>
-                        <ul>
-                            <li>repeat for the accepted path</li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image211.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>Before we move to our process details we will colorize</li>
-                        <li>We start by coloring our user task blue & log task orange</li>
-                        <ul>
-                            <li>select <code>Approve Reward</code>, slide out right <code>Properties</code> tray</li>
-                            <li>under <code>Graphical Settings -> Background Color</code> click on color block</li>
-                            <li>pull down menu, select blue, click on canvas to assign</li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image212.png" />
-                        <img src="images/brms_bpms_workshop/image213.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>Next we color our log task orange</li>
-                        <ul>
-                            <li>select <code>Log</code>, slide out right <code>Properties</code> tray</li>
-                            <li>under <code>Graphical Settings -> Background Color</code> click on color block</li>
-                            <li>pull down menu, select orange, click on canvas to assign</li>
-                        </ul>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image214.png" />
-                        <img src="images/brms_bpms_workshop/image215.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>The rejected path will be colored in the shade of red to indicate an rejected path</li>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image216.png" />
-                        <img src="images/brms_bpms_workshop/image217.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Creating rewards process</h2>
-                    <ul>
-                        <li>As a visual indication of the paths we want to take, we use green for the accepted path</li>
-                    </ul>
-                    <div style="float: right">
-                        <img src="images/brms_bpms_workshop/image218.png" />
-                        <img src="images/brms_bpms_workshop/image219.png" />
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Rewards process</h2>
-                    <h5>(next up, completing process details...)</h5>
-                    <img src="images/brms_bpms_workshop/image220.png">
+                    <h3>Building the Travel Agency</h3>
+                    <h5>(next up, creating guided rules...)</h5>
+                    <img src="images/bpms-workshop/image3-27.png">
                 </section>
 
                 <section data-background="images/jteimages/image42.png" data-background-position="top">
@@ -351,7 +300,6 @@
                     <ul>
                         <li>JBoss BRMS & BPM Suite Articles</li>
                         <ul>
-                            <li><a href="http://schabell.org/search/label/BRMS" style="color: red" target="_blank">http://schabell.org/search/label/BRMS</a></li>
                             <li><a href="http://schabell.org/search/label/BPMS" style="color: red" target="_blank">http://schabell.org/search/label/BPMS</a></li>
                         </ul>
                         <li>JBoss BPM Suite Demos</li>
@@ -370,7 +318,7 @@
 
                 <section>
                     <h2>JBoss BPM Suite Workshop</h2>
-                    <h3><a href="lab15.html" style="color: red" target="_blank">Lab 15 - Completing process details</a></h3>
+                    <h3><a href="lab04a.html" style="color: red" target="_blank">Lab 04 - Create Guided Rules</a></h3>
                 </section>
             </div>
 		</div>
