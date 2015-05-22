@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Red Hat JBoss BPM Suite - Building the Rewards Business Process Workshop</title>
+		<title>Red Hat JBoss BPM Suite - Building the JBoss Travel Agency Workshop</title>
 
 		<meta name="description" content="Online BPM workshop.">
 		<meta name="author" content="Eric D. Schabell">
@@ -49,37 +49,42 @@
                 <section data-background-color="white">
                     <div style="width: 1056px; height: 180px;">
                         <h2>Lab Goal</h2>
-                        <h4>To create guided rules calculating shopping cart totals, totaling shopping cart items, and apply promotions for Cool Store</h4>
+                        <h4>To create guided rules for form field validation and managing our rule facts in memory for JBoss BPM Travel Agency</h4>
                     </div>
                     <div style="width: 1056px; height: 600px;">
-                        <img src="images/brms_bpms_workshop/brms-component-ruleauthoring.png">
+                        <img src="images/bpmsuite-component-ruleauthoring.png">
                     </div>
                 </section>
 
                 <section>
                     <h2>Creating guided rules</h2>
                     <ul>
-                        <li>First we will create a new guided rule:</li>
+                        <li>Start by creating new guided rule:</li>
                         <ul>
-                            <li><code>Total Shopping Cart</code></li>
                             <li><code>AUTHORING -> PROJECT AUTHORING -> NEW ITEM -> GUIDED RULE</code></li>
-                            <li><code>RESOURCE NAME: Total Shopping Cart</code></li>
-                            <li><code>(don't check the DSL box this time)</code></li>
+                            <li><code>RESOURCE NAME: InvalidToDestination</code></li>
+                            <li><code>PACKAGE: default</code></li>
+                            <li>don't check the DSL box, click on <code>+OK</code></li>
                         </ul>
                     </ul>
+                    <div style="width: 1056px; height: 600px;">
+                        <img src="images/bpms-workshop/image4-1.png">
+                    </div>
                 </section>
 
                 <section>
                     <h2>Creating guided rules</h2>
                     <ul>
-                        <li>Start by importing model object <code>ShoppingCart</code> for this rule:</li>
+                        <li>Before writing the rule we need to import the needed model</li>
+                        <li>We need a few objects for this rule:</li>
                         <ul>
                             <li><code>CONFIG tab on the bottom of rule</code></li>
-                            <li><code>NEW ITEM button at top, select ShoppingCart from Import list</code></li>
+                            <li><code>NEW ITEM button at top, select Rejection</code></li>
+                            <li>click on <code>+OK</code></li>
                         </ul>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image168.png" />
-                            <img src="images/brms_bpms_workshop/image169.png" />
+                        <div  style="width: 1056px; height: 300px; float: right">
+                            <img src="images/bpms-workshop/image4-2.png" />
+                            <img src="images/bpms-workshop/image4-3.png" />
                         </div>
                     </ul>
                 </section>
@@ -87,17 +92,82 @@
                 <section>
                     <h2>Creating guided rules</h2>
                     <ul>
-                        <li>Now return to the <code>Edit</code> tab an start designing our rule</li>
-                        <li>The condition (WHEN):</li>
+                        <li>Repeat the same to add <code>TravelDetails</code>:</li>
                         <ul>
-                            <li><code>'There is a ShoppingCart'</code></li>
-                            <li>assign a variable name to this ShoppingCart <code>'$sc'</code></li>
+                            <li><code>CONFIG tab on the bottom of rule</code></li>
+                            <li><code>NEW ITEM button at top, select TravelDetails</code></li>
+                            <li>click on <code>+OK</code></li>
                         </ul>
-                        <div style="float: right">
-                            <img src="images/brms_bpms_workshop/image41.png" />
+                        <div  style="width: 1056px; height: 300px; float: right">
+                            <img src="images/bpms-workshop/image4-4.png" />
+                            <img src="images/bpms-workshop/image4-5.png" />
                         </div>
                     </ul>
                 </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Your <code>CONFIG</code> tab should look like this:</li>
+                        <div  style="width: 1056px; height: 500px; float: right">
+                            <img src="images/bpms-workshop/image4-6.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Now return to the <code>Editor</code> tab an start designing our rule</li>
+                        <li>Click on condition (WHEN) <code>GREEN PLUS ICON</code> top right</li>
+                        <li>Select <code>TravelDetails</code> and click <code>+OK</code></li>
+                        </ul>
+                        <div  style="width: 1056px; height: 500px; float: right">
+                            <img src="images/bpms-workshop/image4-7.png" />
+                            <img src="images/bpms-workshop/image4-8.png" />
+                        </div>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                    <ul>
+                        <li>Click on line <code>'There is a TravelDetails'</code></li>
+                        <li>Select <code>toDestination</code> in <code>'Add a restriction to a field'</code></li>
+                    </ul>
+                    <div  style="width: 1056px; height: 500px; float: right">
+                        <img src="images/bpms-workshop/image4-9.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Creating guided rules</h2>
+                        <ul>
+                            <li>Select <code>'is contianed in...'</code> from pull-down menu</li>
+                            <li>click on <code>pencil mini icon</code> and click on <code>'Literal value'</code> in pop-up</li>
+                        </ul>
+                    <div  style="width: 1056px; height: 500px; float: right">
+                        <img src="images/bpms-workshop/image4-10.png" />
+                        <img src="images/bpms-workshop/image4-11.png" />
+                    </div>
+                </section>
+
+                <section>
+                    <div  style="width: 1056px; height: 150px; float: right">
+                        <h2>Creating guided rules</h2>
+                    </div>
+                    <ul>
+                        <li>Enter text in field: <strong><code>"Edinburgh", "Glasgow"</code></strong></li>
+                    </ul>
+                    <div  style="width: 1056px; height: 500px; float: right">
+                        <img src="images/bpms-workshop/image4-12.png" />
+                    </div>
+                    </ul>
+                </section>
+
+
+
+
 
                 <section>
                     <h2>Creating guided rules</h2>
@@ -116,6 +186,10 @@
                         </div>
                     </ul>
                 </section>
+
+
+
+
 
                 <section>
                     <h2>Creating guided rules</h2>
@@ -137,6 +211,7 @@
                                 <img src="images/brms_bpms_workshop/image43.png" />
                             </div>
                         </ul>
+                    </ul>
                 </section>
 
                 <section>
@@ -283,7 +358,9 @@
                 </section>
 
                 <section data-background="images/jteimages/image42.png" data-background-position="top">
-                    <div style="width: 1056px; height: 100px;" align="right">
+                    <div style="width: 1056px; height: 450px;" align="right">
+                    </div>
+                    <div style="width: 1156px; height: 100px;" align="right">
                         <div style="width: 500px; height: 100px;" align="left">
                             Eric D. Schabell<br>
                             JBoss Technology Evangelist<br>
@@ -305,7 +382,7 @@
                         <li>JBoss BPM Suite Demos</li>
                         <ul>
                             <li><a href="http://www.schabell.org/2014/12/3-reasons-you-need-new-jboss-travel-agency.html" style="color: red" target="_blank">Travel Agency Demo</a></li>
-                            <li><a href="http://www.schabell.org/2014/05/redhat-jboss-bpmsuite-generic-loan-signal-event.html" style="color: red" target="_blank">Generic Loan Demo</a></li>
+                            <li><a href="http://www.schabell.org/2015/05/micro-services-migration-story-with-jboss-bpm-travel-agency.html" style="color: red" target="_blank">Travel Agency Microservices Demo</a></li>
                             <li><a href="http://www.schabell.org/2015/03/jboss-bpmsuite-helping-travelers-with-lost-bags.html" style="color: red" target="_blank">Baggage Delivery Demo</a></li>
                         </ul>
                         <li>JBoss bpmPaaS Demos</li>
